@@ -9,7 +9,7 @@ No library should be used here.
 
 Concept should be independent from implementations
 """
-import functools
+import functools as $
 
 
 from __init__ import monad
@@ -18,8 +18,8 @@ from __init__ import utils
 
 
 Monad=monad.Monad;
-err=functools.partial(utils._err,"Tangle_Core");
-reduce=functools.reduce;
+err=$.partial(utils._err,"Tangle_Core");
+
 
 
 class Tangle(object):
@@ -28,7 +28,7 @@ class Tangle(object):
         super(Tangle, self).__init__();
     def eval(self,*monads):
         # check the types
-        check_type=reduce(lambda x,y:x and y, [isinstance(m,Monad) for m in monads],True);
+        check_type=$.reduce(lambda x,y:x and y, [isinstance(m,Monad) for m in monads],True);
         if(not check_type):
             err("Bad Parameter");
             raise
