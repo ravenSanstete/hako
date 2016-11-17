@@ -18,7 +18,7 @@ from __init__ import utils
 
 
 Monad=monad.Monad;
-err=utils._err;
+err=functools.partial(utils._err,"Tangle_Core");
 reduce=functools.reduce;
 
 
