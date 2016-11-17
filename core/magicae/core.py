@@ -38,5 +38,6 @@ class Magica(object):
         utils.require_override();
     # <override> is needed. return a list of the distributed difference list
     # prototypes passed for reference
+    # diff may be a batch, thus the sublist should be a matrix maybe, along axis-0 do the arrangement
     def _distribute(self, prototypes, diff):
         utils.require_override();

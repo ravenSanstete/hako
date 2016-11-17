@@ -29,11 +29,12 @@ class Prototype(object):
     def measure(self, options):
         return self._measure(options);
     # <override> internal method
+    # if batched, always along axis-0 do the arrangement
     def _measure(self, options):
         utils.require_override();
     # how to propagate the difference backwards based on the backend we use. Thus abstract it
     def propagate(self, diff):
         self._propagte(diff);
-    # <override> internal method
+    # <override> internal method, diff may be a batch
     def _propagte(self, diff):
         utils.require_override();
