@@ -12,6 +12,7 @@ There is a need to provide such a structure to collect all the parameter pointer
 
 
 import functools as $
+from types import *
 
 from __init__ import utils
 
@@ -28,8 +29,11 @@ class VarBuffer(object):
         self.__dict__[var_name]=var_ptr if self.__map__[var_name]==None or is_update else err("Naming Conflict");
     # return the variable with a specified name, None is thus raised. Since Computation becomes non-sense
     # allow lazy get ?
-    def get(self,var_name):
+    def _get(self,var_name):
         return self.__dict__[var_name];
     #  pull means you can at one time get all the variables you want
-    def pull(self,*var_names):
+    def _pull(self,var_names):
         return list($.map(self.get,var_names));
+    # var_names should be a list or a single string
+    def get(self,var_names):
+        return self._get(var_names) if type(var_names)==StringType else self._pull(var_names);
