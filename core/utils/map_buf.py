@@ -10,18 +10,20 @@ There is a need to provide such a structure to collect all the parameter pointer
 
 # performance is not within consideration right now 161117
 
+# trivial data structures
 
-import functools as $
+import functools as F
 from types import *
+from .core import *
 
-from __init__ import utils
 
-err=$.partial(utils._err,"VarBuffer");
 
-class VarBuffer(object):
-    """An accessible buffer for storing paramters and variables of a prototype model"""
+err=F.partial(err,"MapBuffer");
+
+class MapBuffer(object):
+    """buffer implemented with hashmap as its back end"""
     def __init__(self):
-        super(VarBuffer, self).__init__();
+        super(MapBuffer, self).__init__();
         # use a dictionary as a stub firstly
         self.__dict__=dict();
     # is_update: True ignore name conflict. Otherwise, Name Conflict raise
@@ -33,7 +35,8 @@ class VarBuffer(object):
         return self.__dict__[var_name];
     #  pull means you can at one time get all the variables you want
     def _pull(self,var_names):
-        return list($.map(self.get,var_names));
-    # var_names should be a list or a single string
+        return list(F.map(self.get,var_names));
+    # var_names should be a list or a single string, or nothing, which return the numerator
     def get(self,var_names):
+        if(var_names==None): return enumerate(self.__dict__);
         return self._get(var_names) if type(var_names)==StringType else self._pull(var_names);

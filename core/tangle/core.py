@@ -9,16 +9,16 @@ No library should be used here.
 
 Concept should be independent from implementations
 """
-import functools as $
+import functools as F
 
 
-from __init__ import monad
-from __init__ import utils
+from .context import monad
+from .context import utils
 
 
 
 Monad=monad.Monad;
-err=$.partial(utils._err,"Tangle_Core");
+err=F.partial(utils.err,"Tangle_Core");
 
 
 
@@ -26,14 +26,11 @@ class Tangle(object):
     """<Abstract Base Class or Interface> <!!Important Conceptual Class>"""
     def __init__(self):
         super(Tangle, self).__init__();
-    def eval(self,*monads):
-        # check the types
-        check_type=$.reduce(lambda x,y:x and y, [isinstance(m,Monad) for m in monads],True);
-        if(not check_type):
-            err("Bad Parameter");
-            raise
-        self.__eval__(monads);
+    # measurements of the type of numpy
+    def eval(self,*measurements):
+        # TODO: check the types
+        self.__eval(measurements);
     # this should be a private routine for processing the evaluation
     # here monads is a determined length list
-    def __eval__(self,monads):
-        pass;
+    def __eval(self,measurements):
+        utils.require_override();
