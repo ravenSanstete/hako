@@ -20,7 +20,7 @@ class Magica(object):
     # overide,return a mixed prototypes
     def mix(self, prototypes):
         utils.check_types(prototypes,proto.Prototype);
-        return F.partial(measure, self, prototypes), F.partial();
+        return F.partial(measure, self, prototypes), F.partial(propagate, self, prototypes);
     # you may able to set different sample options for each prototype
     # options should be a list the same length with prototypes, otherwise, the last several will be considered as None
     def measure(self, prototypes, options):

@@ -19,7 +19,7 @@ class Monad(object):
     def __init__(self, prototypes, magica, options=None):
         super(Monad, self).__init__();
         assert(isinstance(magica,magicae.Magica));
-        self._propagte,self._measure=magica.mix(prototypes);
+        self._propagte,self._measure=magica.mix(prototypes); # actually, this means that the manipulation of the prototypes is delegated to magica
     # override. define the behavior of measuring a monad with some certain external factors
     # which can be DIY-ed by users. Timestamp seems a rational factor.
     # the composition can be happened here or just
