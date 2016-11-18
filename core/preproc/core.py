@@ -28,7 +28,7 @@ class Feeder(object):
         return self._feed();
     # <override> needed, internal method
     def _feed(self):
-        utils.require_override();s
+        utils.require_override();
         
         
         
