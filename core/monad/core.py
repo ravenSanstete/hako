@@ -8,7 +8,7 @@ from .context import magicae
 
 class Monad(object):
     """Monad.
-    <Abstract Base Class or Interface> <!!Important Conceptual Class>
+    <!!Important Conceptual Class>
     """
     ## Be carefule, prototypes should be a list of prototypes.
     ## And magica is a concept for mixing prototypes, which returns something that is measurable
@@ -16,10 +16,11 @@ class Monad(object):
     # magica here should be a pointer to a global defined magica
     # options can be None. A list for meta-infos to measure each prototype-dedicated monad
     # you are not allowed to modify the measure options once determined
-    def __init__(self, prototypes, magica, options=None):
+    def __init__(self, prototypes, magica,concept,options=None):
         super(Monad, self).__init__();
         assert(isinstance(magica,magicae.Magica));
         self._propagte,self._measure=magica.mix(prototypes); # actually, this means that the manipulation of the prototypes is delegated to magica
+        self.concept=concept; # what's the concept the monad belongs to? which should be the same as the specific name in the user-given dictionary in feeder
     # override. define the behavior of measuring a monad with some certain external factors
     # which can be DIY-ed by users. Timestamp seems a rational factor.
     # the composition can be happened here or just
