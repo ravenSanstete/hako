@@ -21,7 +21,8 @@ class Feeder(object):
     # relations should be a list of tuples of names
     # names should come from vocabulary 
     # dbs is a list of db(which is an abstract layer[interface] of dataset file)
-    def __init__(self, vocabulary, relations, dbs):
+    # db is the same length as the relations also in a corresponding order
+    def __init__(self, concepts, relations, dbs):
         super(Feeder, self).__init__()    
     # a function that return a dictionary
     def feed(self):

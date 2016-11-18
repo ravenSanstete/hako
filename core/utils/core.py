@@ -10,8 +10,10 @@ def require_override():
 # check a list of instance, whether they share the same types
 
 # more complicated check routines will be defined after finishing the type system module
+# this may not be called check types
 def check_types(instance_list,class_ptr):
     return F.reduce(lambda x,y:x and y, [isinstance(m,class_ptr) for m in instance_list],True);
+
 
 
 # entry ports for other modules
