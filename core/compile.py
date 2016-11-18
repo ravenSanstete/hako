@@ -1,8 +1,6 @@
-import hako
-import monad
-import tangle
-import proto
-import optimizer
-import utils
-import magicae
-import type_sys
+import compileall
+import os
+
+
+
+compileall.compile_dir(os.path.join(os.getcwd(),'core'), force=1);
